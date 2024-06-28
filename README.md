@@ -12,7 +12,10 @@ Windows: </br>
 
 Mac/Linux </br>
 `dotnet dev-certs https -ep ${HOME}\.aspnet\https\linkapi.pfx -p 1234` <br>
-`dotnet dev-certs https --trust`
+`dotnet dev-certs https --trust` <br>
+
+`cd ~\.aspnet\https` <br>
+`chmod a+r linkapi.pfx`
 
 Git clone this repo and cd to the root directory<br>
 `git clone <copy link>` <br>
