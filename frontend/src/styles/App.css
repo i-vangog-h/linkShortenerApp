@@ -1,0 +1,106 @@
+.App {
+  background-color: #282c34;
+  text-align: center;
+  min-height: 100vh;
+}
+
+.App-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.shortLinkDisplay{
+  font-size: 16px;
+  display: flex;
+  flex-direction: row;
+  align-self: flex-end;
+}
+
+.shortLinkDisplay * {
+  font-weight: 700;
+  color: white;
+  background-color: black;
+  border: 0;
+}
+
+.shortLinkDisplay a {
+  padding: 1px 1px;
+}
+
+.shortLinkDisplay button{
+  margin-right: 10px;
+  align-content: center;
+  padding: 1px 25px;
+}
+
+.main-bar {
+  display: flex;
+  flex-direction: column;
+}
+
+.list-bar {
+  align-self: flex-start;
+  margin-left: 10px;
+}
+
+.errorBlock {
+  padding-top: 5px;
+  font-size: large;
+  color: red;
+}
+
+table {
+  text-align: start;
+  font-size: medium;
+  margin: 10px;
+  padding: 20px;
+}
+
+table thead {
+  background-color: blueviolet;
+}
+
+table tbody {
+  background-color: black;
+  opacity: 100%;
+}
+
+table th, td {
+  padding: 10px;
+}
+
+form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  margin: 10px;
+  padding: 10px;
+  width: 300px;
+  font-size: 16px;
+}
+
+button {
+  padding: 9px 46.175px;
+  font-weight: 800;
+  background: white;
+  font-size: 16px;
+  cursor: pointer;
+  border: 0;
+}
+
+a {
+  color: white;
+}
+

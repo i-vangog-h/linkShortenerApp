@@ -1,0 +1,48 @@
+services:
+  linkapi.front:
+    image: linkfront
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
+    depends_on: 
+      - linkapi.api # Ensure API is started before frontend
+    container_name: linkapi.front
+  
+  linkapi.api:
+    image: linkapi
+    depends_on:
+        - linkapi.database
+    container_name: linkapi.api
+    build:
+      context: ./backend
+      dockerfile: linkApi/Dockerfile
+    ports:
+      - "5010:5010"
+      - "5011:5011"
+    environment:
+       DB_CONNECTION_STRING: "Host=linkapi.database;Port=5432;Database=link_shortener;Username=postgres;Password=12345678"
+       ASPNETCORE_ENVIRONMENT: "Development"
+       ASPNETCORE_HTTP_PORTS: "5010"
+       ASPNETCORE_HTTPS_PORTS: "5011"
+       ASPNETCORE_Kestrel__Certificates__Default__Password: "1234"
+       ASPNETCORE_Kestrel__Certificates__Default__Path: "/https/linkapi.pfx"
+    volumes:
+       - ~/.aspnet/https:/https:ro
+
+  linkapi.database:
+    image: postgres:latest
+    container_name: linkapi.postgres.database
+    environment:
+        - POSTGRES_DB=link_shortener
+        - POSTGRES_USER=postgres
+        - POSTGRES_PASSWORD=12345678
+    volumes:
+        - ./backend/db_volume:/var/lib/postgres/data
+        - ./backend/DataContextPostgres/seed.sql:/docker-entrypoint-initdb.d/seed.sql
+    ports:
+      - 5432:5432
+    restart: always  
+    
+ 
